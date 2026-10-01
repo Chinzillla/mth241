@@ -1,0 +1,657 @@
+{
+  "metadata": {
+    "edition": 10,
+    "chapters": [
+      1,
+      2,
+      3
+    ],
+    "groupedPrefix": "A through P",
+    "recognitionPrefix": "R",
+    "mixedPrefix": "X"
+  },
+  "groups": [
+    {
+      "id": "A",
+      "title": "Basic counting and permutations",
+      "source": "Ross 1.2--1.3; September 3 notes and homework.",
+      "items": [
+        {
+          "q": "A code has three letters followed by four digits. There are 26 letters and 10 digits; a zero is allowed in any digit position. Count the codes (a) with repetition allowed and (b) with no repeated letter and no repeated digit.",
+          "a": "Each position has a distinct job. (a) \\(26^3 10^4\\). (b) \\((26)_3(10)_4\\). Multiply the letter task and the digit task. Here \\((n)_r=n!/(n-r)!\\). Do not use combinations: swapping two positions usually changes the code."
+        },
+        {
+          "q": "Using digits 0 through 9, count (a) length-five digit strings with no repeated digit, (b) five-digit integers with no repeated digit, and (c) five-digit integers in which adjacent digits differ but nonadjacent repeats are allowed.",
+          "a": "(a) \\((10)_5\\): leading zero is allowed in a string. (b) \\(9(9)_4\\): the first digit cannot be zero; after it is chosen, nine digits remain. (c) \\(9\\cdot9^4\\): first digit has nine choices and every later digit excludes only its predecessor. \\emph{No adjacent repeats} does not mean \\emph{no repeats anywhere}."
+        },
+        {
+          "q": "A club has 12 members. Count assignments of president, secretary, and treasurer (a) to three different people and (b) when one person may hold multiple offices.",
+          "a": "The offices are labeled. (a) \\((12)_3\\); (b) \\(12^3\\). A set of three members does not specify which person holds which office, so \\(\\binom{12}{3}\\) alone does not solve (a)."
+        },
+        {
+          "q": "A visitor chooses either a bus package (one of 4 buses and one of 3 tours) or a train package (one of 2 trains and one of 5 tours). The package types are distinct. How many packages are possible?",
+          "a": "\\(4\\cdot3+2\\cdot5\\). Within a package choose transport AND tour, so multiply; between the two disjoint package types use OR, so add. The rule depends on disjoint alternatives, not merely the word \\emph{or}."
+        },
+        {
+          "q": "Three distinct prizes are awarded among 9 students. Count awards when (a) everyone receives at most one prize, (b) a student may receive any number, and (c) exactly two different students receive prizes.",
+          "a": "(a) \\((9)_3\\). (b) \\(9^3\\). (c) \\(9\\cdot8\\binom{3}{2}\\): choose the double winner, the single winner, and the two prizes for the double winner. Alternatively \\(\\binom92(2^3-2)\\). Do not count the two recipients as interchangeable once their roles differ."
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Restricted and circular arrangements",
+      "source": "Ross 1.3; September 17 notes and homework.",
+      "items": [
+        {
+          "q": "Seven distinct people, including A and B, sit in a row. Count arrangements when (a) A and B are adjacent, (b) A and B are not adjacent, and (c) A is somewhere before B.",
+          "a": "(a) Treat AB as a block: \\(2\\cdot6!\\), with two internal orders. (b) \\(7!-2\\cdot6!\\), total minus adjacent. (c) \\(7!/2\\): swapping A and B pairs every A-before-B arrangement with one B-before-A arrangement. \\emph{Before} does not mean \\emph{immediately before}."
+        },
+        {
+          "q": "Four distinct women and four distinct men sit in a row. Count arrangements when (a) the groups alternate, (b) all women are together, and (c) both all women and all men are together.",
+          "a": "(a) \\(2(4!)^2\\): two gender patterns and independent within-group orders. (b) \\(5!4!\\): one block of women and four individual men, then the women inside the block. (c) \\(2!4!4!\\): two blocks and their internal orders. Do not multiply by an extra block-order factor in (b)."
+        },
+        {
+          "q": "Five distinct adults and three distinct children sit in a row. No two children may be adjacent. Count the arrangements.",
+          "a": "Seat the adults in \\(5!\\) ways. Their row makes six gaps, including the ends. Choose three gaps and assign the children: \\(5!\\binom63 3!\\). Putting multiple children in one gap would violate the restriction."
+        },
+        {
+          "q": "Eight distinct people sit around a round table. Rotations count as the same and reflections count as different. Count arrangements (a) without restrictions and (b) when A and B are adjacent.",
+          "a": "(a) \\((8-1)!\\): fix a reference person to remove rotational duplication. (b) \\(2(7-1)!\\): the AB block and the other six people form seven circular units; multiply by AB versus BA. Do not divide by two for reflections, which are different here."
+        },
+        {
+          "q": "Arrange A, B, C, D, E, F, G in a row. Count arrangements with (a) A before B before C, (b) A before B and C before D, and (c) A, B, C consecutive in that exact order.",
+          "a": "(a) \\(7!/3!\\): all six relative orders of A, B, C occur equally often. (b) \\(7!/(2!2!)\\): swapping A/B and C/D gives four equally sized classes. (c) \\(5!\\): use the single block ABC plus four other letters. Relative order permits gaps; a fixed block does not."
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Combinations and restricted selections",
+      "source": "Ross 1.4; September 10 notes and September 10/17 homework.",
+      "items": [
+        {
+          "q": "Choose a committee of 5 from 12 people including A and B. Count committees when (a) A must serve, (b) A and B cannot both serve, and (c) A and B either both serve or neither serves.",
+          "a": "(a) \\(\\binom{11}{4}\\). (b) \\(\\binom{12}{5}-\\binom{10}{3}\\), subtract committees containing both. (c) \\(\\binom{10}{3}+\\binom{10}{5}\\), the disjoint both/neither cases. No positions are assigned to committee members."
+        },
+        {
+          "q": "A committee contains 3 women from 8 and 2 men from 6. Count committees (a) without restrictions and (b) when one specified woman and one specified man refuse to serve together.",
+          "a": "(a) \\(\\binom83\\binom62\\). (b) \\(\\binom83\\binom62-\\binom72\\binom51\\). In the forbidden case the two specified people are already included; choose the remaining two women and one man."
+        },
+        {
+          "q": "From 9 married couples, choose 5 people without selecting both members of any couple. (a) Count all such groups. (b) Count those containing exactly 2 women and 3 men, assuming each couple has one woman and one man.",
+          "a": "(a) \\(\\binom95 2^5\\): choose five couples and one member of each. (b) \\(\\binom95\\binom52\\): choose five couples, then which two contribute women. Equivalently \\(\\binom92\\binom73\\). Once gender is specified, the person from each selected couple is determined."
+        },
+        {
+          "q": "Count subsets of size 4 of \\(\\{1,\\ldots,20\\}\\) containing at least one of \\(1,2,3,4,5\\). Then count strictly increasing sequences \\(a_1<a_2<a_3<a_4<a_5\\) drawn from \\(\\{1,\\ldots,20\\}\\).",
+          "a": "First answer: \\(\\binom{20}{4}-\\binom{15}{4}\\), subtract subsets avoiding all five special elements. Second answer: \\(\\binom{20}{5}\\). Each five-element subset has exactly one increasing ordering. Ordered notation does not automatically require a permutation factor."
+        },
+        {
+          "q": "A team wins a best-of-seven series by winning its fourth game; the series stops then. Count the possible win/loss sequences in which team A wins the series.",
+          "a": "Split by the final length \\(k=4,5,6,7\\). The last game must be a win; choose the positions of the first three wins among the first \\(k-1\\) games. Thus \\(\\sum_{k=4}^7\\binom{k-1}{3}=\\binom74\\). No earlier fourth win is possible. These stopped sequences are not equally likely under fair games because their lengths differ."
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Repeated objects, multinomial coefficients, and pairing",
+      "source": "Ross 1.3--1.5; early homework and lattice-path practice.",
+      "items": [
+        {
+          "q": "How many distinct letter arrangements are possible for (a) BANANA and (b) MISSISSIPPI? Explain each divisor.",
+          "a": "(a) \\(6!/(3!2!)\\), for three indistinguishable A's and two N's. (b) \\(11!/(4!4!2!)\\), for four I's, four S's, and two P's. Begin with temporarily labeled copies and divide by the number of relabelings that leave the visible word unchanged."
+        },
+        {
+          "q": "Divide 12 distinct students into (a) labeled groups Red, Blue, Green of sizes 5, 4, 3; (b) three labeled groups of size 4; and (c) three unlabeled groups of size 4.",
+          "a": "(a) \\(\\binom{12}{5}\\binom74\\binom33=12!/(5!4!3!)\\). (b) \\(12!/(4!)^3\\). (c) \\(12!/((4!)^3 3!)\\). The last divisor removes permutations of the three unlabeled groups; it is inappropriate for labeled groups."
+        },
+        {
+          "q": "A lattice path from \\((0,0)\\) to \\((6,4)\\) uses only right and up unit steps. Count paths (a) in total, (b) through \\((2,1)\\), and (c) avoiding \\((2,1)\\).",
+          "a": "(a) \\(\\binom{10}{4}\\), choose up-step positions. (b) \\(\\binom31\\binom73\\): concatenate a path to the intermediate point with one from it to the destination. (c) \\(\\binom{10}{4}-\\binom31\\binom73\\). Every through-path has a unique two-piece decomposition."
+        },
+        {
+          "q": "Find the coefficient of (a) \\(x^3y^5\\) in \\((x+y)^8\\), and (b) \\(x^2y^3z^4\\) in \\((2x-y+3z)^9\\). Explain the sign in (b).",
+          "a": "(a) \\(\\binom83\\). (b) \\(\\dfrac{9!}{2!3!4!}2^2(-1)^3 3^4\\). Choose which factors supply each variable, then multiply their scalar coefficients. The coefficient is negative because three factors contribute \\(-y\\)."
+        },
+        {
+          "q": "Select 4 women from 7 and 4 men from 9, then pair them into four woman--man pairs. The pairs have no labels. Count the results. Separately, count ways to split 8 distinct people into four unlabeled pairs with no gender restriction.",
+          "a": "First: \\(\\binom74\\binom94 4!\\). After choosing the people, fix an ordering of the selected women and assign the four men to them. A second \\(4!\\) would order the pairs unnecessarily. Second: \\(8!/((2!)^4 4!)\\), removing swaps within each pair and permutations of the four pairs."
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "title": "Multichoose and integer solutions",
+      "source": "Ross 1.6; September 15 and 17 notes.",
+      "items": [
+        {
+          "q": "A bakery has unlimited supplies of 6 donut flavors. Count unordered boxes of 10 donuts (a) without restrictions and (b) containing at least one of each flavor.",
+          "a": "A box is described by six flavor counts, not ten ordered slots. (a) \\(\\binom{6+10-1}{10}=\\binom{15}{5}\\). (b) Reserve one of each flavor, then distribute four remaining donuts: \\(\\binom{6+4-1}{4}=\\binom95\\). Neither \\(6^{10}\\) nor \\(\\binom6{10}\\) models these boxes."
+        },
+        {
+          "q": "Count integer solutions of \\(x_1+x_2+x_3+x_4=18\\) for (a) all \\(x_i\\ge0\\), (b) all \\(x_i\\ge1\\), and (c) \\(x_1\\ge3,x_2\\ge2,x_3\\ge0,x_4\\ge1\\).",
+          "a": "(a) \\(\\binom{21}{3}\\). (b) Subtract 1 from every variable: remaining sum 14, giving \\(\\binom{17}{3}\\). (c) Subtract the lower bounds \\((3,2,0,1)\\); remaining sum 12 gives \\(\\binom{15}{3}\\). The variables label categories: \\((1,2,0,15)\\) and \\((2,1,0,15)\\) are different solutions."
+        },
+        {
+          "q": "Count nonnegative integer solutions of \\(x+y+z=12\\) with (a) \\(x\\le4\\) and (b) both \\(x\\le4\\) and \\(y\\le3\\).",
+          "a": "(a) Total \\(\\binom{14}{2}\\), subtract \\(x\\ge5\\) after setting \\(x'=x-5\\): \\(\\binom{14}{2}-\\binom92\\). (b) Exclude \\(x\\ge5\\) and \\(y\\ge4\\), then restore their overlap: \\(\\binom{14}{2}-\\binom92-\\binom{10}{2}+\\binom52\\). Strict versus weak bounds determine the amount subtracted."
+        },
+        {
+          "q": "Count nonnegative integer triples satisfying \\(x+y+z\\le12\\). Explain how to change the inequality into an equation.",
+          "a": "Introduce a unique slack variable \\(w=12-x-y-z\\ge0\\). Then count \\(x+y+z+w=12\\): \\(\\binom{15}{3}\\). Do not use the equality answer \\(\\binom{14}{2}\\), which misses triples with sum below 12."
+        },
+        {
+          "q": "Put 9 identical tokens into 4 labeled boxes, using exactly 3 nonempty boxes. Then solve the same problem when the 9 tokens are distinct.",
+          "a": "Identical: choose the three used boxes and positive occupancies, \\(\\binom43\\binom82\\). Distinct: choose the boxes and count onto assignments, \\(\\binom43[3^9-\\binom31 2^9+\\binom32 1^9]\\). Stars and bars counts occupancy vectors; distinct tokens require counting assignments to boxes."
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "title": "Combinatorial proofs",
+      "source": "Ross 1.4--1.5; September 10 notes and theory homework.",
+      "items": [
+        {
+          "q": "Give counting proofs of (a) \\(\\binom nr=\\binom n{n-r}\\), and (b) \\(\\binom nr=\\binom{n-1}{r}+\\binom{n-1}{r-1}\\) for \\(1\\le r\\le n-1\\). Do not expand factorials.",
+          "a": "(a) Selecting the included \\(r\\) people uniquely determines the excluded \\(n-r\\) people, and conversely. (b) Count committees of size \\(r\\) from \\(n\\) people. Fix one person. Committees excluding that person number \\(\\binom{n-1}{r}\\); committees including that person number \\(\\binom{n-1}{r-1}\\). The cases are disjoint and exhaustive, so add them."
+        },
+        {
+          "q": "Prove \\(\\binom{m+n}{r}=\\sum_{k=0}^r\\binom mk\\binom n{r-k}\\) by counting one collection in two ways. Take impossible binomial choices to be zero.",
+          "a": "Count size-\\(r\\) committees from disjoint groups with \\(m\\) and \\(n\\) people. Directly there are \\(\\binom{m+n}{r}\\). Alternatively classify committees by \\(k\\), the number from the first group. For each \\(k\\), independently choose \\(k\\) and \\(r-k\\) people. Every committee appears in exactly one class. This is why the products are summed."
+        },
+        {
+          "q": "For \\(n\\ge1\\), prove \\(\\sum_{k=1}^n k\\binom nk=n2^{n-1}\\) by choosing a committee and its chairperson.",
+          "a": "Left: for a size-\\(k\\) committee, choose its members and then one of its \\(k\\) members as chair; sum over sizes. Right: choose the chair in \\(n\\) ways, then independently include or exclude each of the remaining \\(n-1\\) people. Both count committees with a designated chair, and no empty committee is counted."
+        },
+        {
+          "q": "For \\(n\\ge2\\), prove \\(\\sum_{k=1}^n k^2\\binom nk=n2^{n-1}+n(n-1)2^{n-2}\\). Interpret the two terms on the right.",
+          "a": "Count a committee with a chair and secretary, allowing one person to hold both offices. Left: choose the committee and its two officeholders. Right: if the officeholders coincide, choose that person and any subset of the other people, giving \\(n2^{n-1}\\). If they differ, assign the two labeled offices in \\(n(n-1)\\) ways and include/exclude the others, giving \\(n(n-1)2^{n-2}\\). The right side also equals \\(n(n+1)2^{n-2}\\), not \\(n(n-1)2^{n-2}\\)."
+        },
+        {
+          "q": "For integers \\(r\\ge1,n\\ge0\\), prove \\(\\sum_{x_1+\\cdots+x_r=n,\\ x_i\\ge0}\\frac{n!}{x_1!\\cdots x_r!}=r^n\\) by counting words.",
+          "a": "Count length-\\(n\\) words over an alphabet of \\(r\\) letters. There are \\(r\\) choices for each position, so \\(r^n\\). Alternatively group words by their letter counts \\((x_1,\\ldots,x_r)\\). A fixed count vector gives \\(n!/(x_1!\\cdots x_r!)\\) words. These classes are disjoint and exhaustive. For \\(n=0\\), both sides count the single empty word."
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "title": "Poker hands: ranks, suits, and overcounting",
+      "source": "Ross 1.4 and 2.5; September 15 notes and poker homework.",
+      "items": [
+        {
+          "q": "Use a standard 52-card deck with 13 ranks and 4 suits. A hand is an unordered selection of 5 distinct cards. Count (a) all hands and (b) hands with exactly one pair. In (b), the other three ranks must all differ from each other and from the pair.",
+          "a": "(a) \\(\\binom{52}{5}\\). (b) \\(\\binom{13}{1}\\binom42\\binom{12}{3}4^3\\): pair rank, pair suits, three other ranks, then one suit for each other rank. The last ranks are selected without order; their suits are assigned to the selected ranks. Physical cards do not repeat, but suits may."
+        },
+        {
+          "q": "Under G1's deck convention, count hands with (a) exactly two pairs and (b) exactly three of a kind (excluding full houses).",
+          "a": "(a) \\(\\binom{13}{2}\\binom42^2\\binom{11}{1}4\\). Select the two pair ranks as an unordered set; choose suits for each and then the remaining card. (b) \\(\\binom{13}{1}\\binom43\\binom{12}{2}4^2\\). The two single ranks form an unordered set. Using \\(12\\cdot11\\) in place of \\(\\binom{12}{2}\\) would double-count."
+        },
+        {
+          "q": "Under G1's deck convention, count (a) full houses (three cards of one rank and two of another) and (b) four-of-a-kind hands.",
+          "a": "(a) \\(\\binom{13}{1}\\binom43\\binom{12}{1}\\binom42\\): the triple and pair have different roles, so their ranks are chosen successively. No division by \\(2!\\) is needed. (b) \\(\\binom{13}{1}\\binom44\\binom{12}{1}4\\): choose the four-card rank and one remaining card."
+        },
+        {
+          "q": "For G4--G5, use the convention recorded in your poker homework: ace is high only; A,2,3,4,5 is not a straight. Thus there are 9 straight rank patterns. Count (a) straights that are not flushes and (b) flushes that are not straights.",
+          "a": "(a) \\(9(4^5-4)\\): choose a rank pattern, then a suit for each rank, excluding the four constant-suit choices. (b) \\(4[\\binom{13}{5}-9]\\): choose the suit and a nonstraight rank set. This explicit ace-high convention matches the recorded homework, but its status as an instructor requirement is unverified. If ace-low straights are allowed, replace 9 by 10 in these formulas."
+        },
+        {
+          "q": "Using G4's ace-high-only convention, count (a) high-card hands (five different ranks, neither straight nor flush), (b) straight flushes including royal flushes, and (c) royal flushes. State how many straight flushes remain if royal flushes are excluded. Give the probability of each category under uniform dealing.",
+          "a": "(a) \\([\\binom{13}{5}-9](4^5-4)\\). (b) \\(9\\cdot4\\). (c) \\(4\\), one suit for ranks 10,J,Q,K,A. Excluding royal flushes leaves \\((9-1)4\\). Divide each count by \\(\\binom{52}{5}\\) for its probability. When checking a partition of all hands, use either straight flush including royal OR the two separate categories, not both."
+        }
+      ]
+    },
+    {
+      "id": "H",
+      "title": "Sample spaces and event language",
+      "source": "Ross 2.2; September 24 notes.",
+      "items": [
+        {
+          "q": "A bag contains three distinct balls R, G, B. Two balls are drawn in order. List sample spaces (a) with replacement and (b) without replacement. In each space, list the event that at least one ball is R.",
+          "a": "(a) \\(S=\\{RR,RG,RB,GR,GG,GB,BR,BG,BB\\}\\), with event \\(\\{RR,RG,RB,GR,BR\\}\\). (b) \\(S=\\{RG,RB,GR,GB,BR,BG\\}\\), with event \\(\\{RG,RB,GR,BR\\}\\). An ordered outcome records both draws. Identical color names here identify distinct balls because there is only one ball of each color."
+        },
+        {
+          "q": "Two independent fair dice are rolled. Describe a sample space whose outcomes are equally likely and write the event that the sum is 5. Why is a uniform model on \\(\\{2,3,\\ldots,12\\}\\) incorrect?",
+          "a": "Use \\(S=\\{(i,j):1\\le i,j\\le6\\}\\), with probability \\(1/36\\) for each ordered pair. The event is \\(\\{(1,4),(2,3),(3,2),(4,1)\\}\\). The set of sums is a valid reduced outcome space only with unequal probabilities; for example sum 2 has one preimage and sum 7 has six."
+        },
+        {
+          "q": "A fair die is rolled independently until the first 6. Describe the finite stopped sequences and the event \\(E_n\\) that the first 6 occurs on roll \\(n\\). Find \\(|E_n|\\) and \\(P(E_n)\\). Explain what the union of all \\(E_n\\) represents, including the possibility of never rolling a 6.",
+          "a": "Finite outcomes are \\((a_1,\\ldots,a_{n-1},6)\\), with every \\(a_i\\in\\{1,\\ldots,5\\}\\). Thus \\(|E_n|=5^{n-1}\\), and \\(P(E_n)=5^{n-1}/6^n\\). The union is the event of eventual stopping. In the full infinite-trial model its complement is the event of never seeing 6, which has probability \\(\\lim_n(5/6)^n=0\\). One may also use a reduced stopped-sequence model that omits this null event; state the convention. The finite sequences are not equally likely across different lengths."
+        },
+        {
+          "q": "For events E, F, G, express (a) only E, (b) at least two, (c) exactly two, (d) at most one, and (e) at most two using unions, intersections, and complements.",
+          "a": "(a) \\(E\\cap F^c\\cap G^c\\). (b) \\((E\\cap F)\\cup(E\\cap G)\\cup(F\\cap G)\\). (c) \\((E\\cap F\\cap G^c)\\cup(E\\cap G\\cap F^c)\\cup(F\\cap G\\cap E^c)\\). (d) Complement of (b). (e) \\((E\\cap F\\cap G)^c\\). In (c), the three cases are disjoint. Subtracting at-least-two from at-least-one gives exactly one, not exactly two."
+        },
+        {
+          "q": "Show that \\((E\\cup F)^c=E^c\\cap F^c\\) by describing membership. Also express the event that exactly one of E and F occurs, and explain why its two parts are disjoint.",
+          "a": "An outcome outside \\(E\\cup F\\) is in neither set, which means it is in both complements. Exactly one is \\((E\\cap F^c)\\cup(E^c\\cap F)\\). An outcome cannot be both in E and outside E, so the two pieces are disjoint. This is a set statement before it becomes a probability calculation."
+        }
+      ]
+    },
+    {
+      "id": "I",
+      "title": "Probability by counting, complements, and inclusion--exclusion",
+      "source": "Ross 2.4--2.5; September 24 homework.",
+      "items": [
+        {
+          "q": "A jar has 7 white and 5 black distinct balls. A uniformly random set of 4 is drawn without replacement. Find the probability of (a) exactly 2 black balls, (b) at least 1 black ball, and (c) all balls having the same color.",
+          "a": "The common denominator is \\(\\binom{12}{4}\\). Numerators: (a) \\(\\binom52\\binom72\\); (b) total minus all-white, so \\(1-\\binom74/\\binom{12}{4}\\); (c) \\(\\binom54+\\binom74\\). Use unordered selections in both numerator and denominator. The colors alone are not equally likely outcomes."
+        },
+        {
+          "q": "Suppose \\(P(A)=2/5\\), \\(P(B)=1/2\\), and \\(P(A\\cap B)=1/5\\). Find the probabilities of (a) at least one, (b) neither, (c) A but not B, and (d) exactly one.",
+          "a": "(a) \\(2/5+1/2-1/5\\). (b) \\(1-(2/5+1/2-1/5)\\). (c) \\(2/5-1/5\\). (d) \\(2/5+1/2-2(1/5)\\). The intersection is counted twice in the marginal sum; exactly one removes both copies, whereas the union keeps one."
+        },
+        {
+          "q": "In a group of 100 students, 45 take A, 40 take B, 30 take C, 18 take A and B, 12 take A and C, 10 take B and C, and 5 take all three. Pairwise counts include the triple intersection. Find (a) at least one, (b) exactly one, (c) exactly two, and (d) none.",
+          "a": "Let \\(s_1=45+40+30\\), \\(s_2=18+12+10\\), \\(t=5\\). (a) \\(s_1-s_2+t\\). (b) \\(s_1-2s_2+3t\\). (c) \\(s_2-3t\\). (d) \\(100-(s_1-s_2+t)\\). A member of all three appears three times in \\(s_1\\) and three times in \\(s_2\\); tracking that multiplicity explains each correction."
+        },
+        {
+          "q": "A group of \\(n\\) people has independent birthdays uniformly distributed over 365 days; ignore leap years and take \\(2\\le n\\le365\\). Find the probability that at least two share a birthday.",
+          "a": "Complement the event. All birthday lists number \\(365^n\\). Lists with no repeated day number \\((365)_n\\). The answer is \\(1-(365)_n/365^n\\). Counting pairs and adding their match probabilities overcounts outcomes with several matching pairs."
+        },
+        {
+          "q": "An urn has 4 red, 5 blue, and 6 green distinct balls. A uniformly random subset of 5 is chosen. Find the probability that every color appears.",
+          "a": "The total is \\(\\binom{15}{5}\\). Exclude missing-color events and restore their pairwise overlaps. The answer is\n\\[1-\\frac{\\binom{11}{5}+\\binom{10}{5}+\\binom95}{\\binom{15}{5}}+\\frac{\\binom65+\\binom55+\\binom45}{\\binom{15}{5}}.\\]\nHere \\(\\binom45=0\\). Missing all three colors is impossible. Alternatively sum \\(\\binom4r\\binom5b\\binom6g/\\binom{15}{5}\\) over positive \\(r+b+g=5\\)."
+        }
+      ]
+    },
+    {
+      "id": "J",
+      "title": "September 29 focus: axioms and equally likely outcomes",
+      "source": "Ross 2.3--2.5; September 29 notes. Symbolic answers follow your stated exam preference.",
+      "items": [
+        {
+          "q": "For singleton outcomes define \\(p(s)=1/s\\). Test whether this determines a probability law on (a) \\(S=\\{2,3,4\\}\\), (b) \\(S=\\{2,3,6\\}\\). In each valid case define probabilities of general events. Also normalize \\(p(s)=c/s\\) on \\(\\{2,3,4\\}\\).",
+          "a": "(a) Invalid: \\(1/2+1/3+1/4=13/12\\ne1\\). (b) Valid: all weights are nonnegative and sum to 1. Define \\(P(E)=\\sum_{s\\in E}p(s)\\); this makes additivity hold on disjoint events. For the normalization, \\(c=(1/2+1/3+1/4)^{-1}=12/13\\). Merely checking individual weights lie in \\([0,1]\\) is insufficient."
+        },
+        {
+          "q": "On \\(S=\\{1,2,\\ldots\\}\\), assign \\(p(n)=c/3^n\\). Find c so this is a probability law, then find \\(P(\\{2,4,6,\\ldots\\})\\). Explain why checking finitely many weights does not establish normalization.",
+          "a": "The geometric sum is \\(\\sum_{n\\ge1}3^{-n}=(1/3)/(1-1/3)=1/2\\), so \\(c=2\\). The even-outcome probability is \\(2\\sum_{k\\ge1}3^{-2k}=2(1/9)/(1-1/9)\\). Define event probabilities by summing weights. The entire infinite series must sum to 1; a finite partial sum does not check that requirement."
+        },
+        {
+          "q": "Starting from the probability axioms, prove (a) \\(P(\\varnothing)=0\\) and (b) \\(P(E^c)=1-P(E)\\). Identify the disjoint sets at each step.",
+          "a": "(a) \\(S\\cup\\varnothing=S\\) with disjoint terms, so \\(P(S)=P(S)+P(\\varnothing)\\); subtract to obtain 0. (b) \\(E\\cap E^c=\\varnothing\\) and \\(E\\cup E^c=S\\), so disjoint additivity gives \\(P(E)+P(E^c)=P(S)=1\\). Both conclusions need explicit set identities, not just the final formula."
+        },
+        {
+          "q": "Prove \\(P(E)=P(E\\cap F)+P(E\\cap F^c)\\). Use disjoint decompositions to prove (a) \\(E\\subseteq F\\Rightarrow P(E)\\le P(F)\\), and (b) \\(P(E\\cup F)\\le P(E)+P(F)\\).",
+          "a": "The identity follows from \\(E=(E\\cap F)\\cup(E\\cap F^c)\\), a disjoint union. (a) \\(F=E\\cup(F\\cap E^c)\\), disjoint, so \\(P(F)=P(E)+P(F\\cap E^c)\\ge P(E)\\). (b) \\(E\\cup F=E\\cup(F\\cap E^c)\\), disjoint, hence its probability is at most \\(P(E)+P(F)\\) by (a). Extend the same idea by induction for a finite union bound."
+        },
+        {
+          "q": "(a) Two independent fair dice are rolled. Find the probability their sum is prime, justifying the denominator. (b) A uniformly random set of 3 balls is drawn from 6 white and 5 black distinct balls. Find the probability of exactly 2 black and 1 white. Explain the numerator and denominator.",
+          "a": "(a) Ordered dice pairs are the 36 equally likely outcomes. Prime sums \\(2,3,5,7,11\\) have \\(1,2,4,6,2\\) ordered pairs, respectively, giving \\((1+2+4+6+2)/36\\). For sum 11 the pairs are \\((5,6),(6,5)\\). (b) \\(\\binom52\\binom61/\\binom{11}{3}\\). Select the required colors in the numerator and any three distinct balls in the denominator. No order is recorded in either count."
+        }
+      ]
+    },
+    {
+      "id": "K",
+      "title": "Probability limits and probability as belief",
+      "source": "Ross 2.6--2.7; textbook coverage beyond the current notes.",
+      "items": [
+        {
+          "q": "On the positive integers let \\(P(\\{k\\})=2^{-k}\\). Define \\(A_n=\\{1,\\ldots,n\\}\\). Identify whether the events increase or decrease; find \\(P(A_n)\\), their limiting event, and its probability.",
+          "a": "The events increase. The finite geometric sum gives \\(P(A_n)=1-2^{-n}\\). Their union is all positive integers, so continuity from below gives \\(P(\\bigcup_n A_n)=\\lim_n(1-2^{-n})=1\\). This is a union of nested sets, not a sum of their overlapping probabilities."
+        },
+        {
+          "q": "Let \\(B_1\\supseteq B_2\\supseteq\\cdots\\) with \\(P(B_n)=1/(n+1)\\). Find \\(P(\\bigcap_n B_n)\\). Must \\(\\bigcap_n B_n\\) be empty? Explain.",
+          "a": "Continuity from above gives \\(P(\\bigcap_n B_n)=\\lim_n1/(n+1)=0\\). The intersection need not be empty: zero probability does not imply an impossible outcome in a general probability space. For example, under a probability model assigning interval length on \\([0,1]\\), the sets \\([0,1/(n+1)]\\) intersect in \\(\\{0\\}\\), which has probability zero."
+        },
+        {
+          "q": "Prove continuity from below: if \\(A_n\\uparrow A\\), then \\(P(A_n)\\to P(A)\\). Then explain how the decreasing-event version follows.",
+          "a": "Let \\(D_1=A_1\\), \\(D_n=A_n\\setminus A_{n-1}\\) for \\(n\\ge2\\). These sets are disjoint, \\(A_n=\\bigcup_{j=1}^nD_j\\), and \\(A=\\bigcup_{j\\ge1}D_j\\). Thus countable additivity gives \\(P(A)=\\sum_{j\\ge1}P(D_j)=\\lim_n\\sum_{j=1}^nP(D_j)=\\lim_nP(A_n)\\). For decreasing \\(B_n\\), apply this to increasing complements and use \\((\\bigcap_nB_n)^c=\\bigcup_nB_n^c\\)."
+        },
+        {
+          "q": "Someone assigns personal probabilities \\(P(A)=2/5\\), \\(P(B)=1/2\\), \\(P(A\\cap B)=1/10\\), and \\(P(A\\cup B)=9/10\\). Are these coherent? What union probability is required if the first three assignments stay fixed? Why must subjective probabilities satisfy the same axioms?",
+          "a": "The required union is \\(2/5+1/2-1/10=4/5\\), so \\(9/10\\) is inconsistent. A subjective probability measures belief, but a coherent probability assignment still obeys normalization and additivity. Being an opinion does not remove the mathematical consistency requirements."
+        },
+        {
+          "q": "Suppose \\(F_1,F_2,\\ldots\\) is a countable list of events and each has probability 0. Prove that the probability that any \\(F_i\\) occurs is 0. Explain why the same conclusion cannot be asserted for an arbitrary uncountable family.",
+          "a": "For each n, the finite union bound gives \\(P(\\bigcup_{i=1}^n F_i)\\le\\sum_{i=1}^nP(F_i)=0\\). These finite unions increase, so continuity gives probability zero for the countable union. Countable additivity does not extend to uncountably many events: in the interval-length model on \\([0,1]\\), every singleton has probability 0 but their uncountable union is the whole space, of probability 1."
+        }
+      ]
+    },
+    {
+      "id": "L",
+      "title": "Conditional probability and multiplication rules",
+      "source": "Ross 3.1--3.2; included under the request to cover all Chapter 3.",
+      "items": [
+        {
+          "q": "Two independent fair dice are rolled. Find the probability the sum is 8 given (a) the first die is 3 and (b) at least one die is 3. Define the conditioning event in each case.",
+          "a": "(a) The conditioning event has six outcomes \\((3,j)\\); only \\((3,5)\\) works, so \\(1/6\\). (b) There are \\(6+6-1=11\\) outcomes with at least one 3; \\((3,5)\\) and \\((5,3)\\) work, giving \\(2/11\\). The two pieces of information create different reduced spaces."
+        },
+        {
+          "q": "Three independent fair coins are flipped. Find the probability of exactly two heads given (a) at least one head and (b) that the first flip is a head.",
+          "a": "(a) \\(\\binom32/(2^3-1)\\): exclude TTT, then count the three two-head sequences. (b) \\(\\binom21/2^2\\): after the first H, the other two flips need exactly one H. Conditioning does not mean averaging over verbal categories such as one, two, or three heads equally."
+        },
+        {
+          "q": "An urn has 5 red and 4 blue balls. Three balls are drawn uniformly, one at a time without replacement. Find (a) P(R,B,R) in that order and (b) the probability of exactly two red balls, without a specified order. Give two equivalent expressions for (b).",
+          "a": "(a) \\((5/9)(4/8)(4/7)\\). (b) The three possible color orders have the same probability here, so \\(\\binom32(5/9)(4/8)(4/7)\\). Equivalently \\(\\binom52\\binom41/\\binom93\\). The changing denominators track the remaining balls; the extra \\(\\binom32\\) belongs only to the unspecified-order event."
+        },
+        {
+          "q": "An urn has 4 red and 3 blue balls. Each red ball has weight 2 and each blue ball has weight 1. On each draw, a particular remaining ball is chosen with probability proportional to its weight. Two balls are drawn without replacement. Find the probability both are red.",
+          "a": "Total initial weight is \\(4\\cdot2+3\\cdot1=11\\). After removing a red, the remaining red weight is 6 and total weight is 9. Thus \\((8/11)(6/9)\\). The unweighted ratio \\(\\binom42/\\binom72\\) is not valid: the two-ball subsets are not equally likely under this drawing rule."
+        },
+        {
+          "q": "State the definition of \\(P(A\\mid B)\\), including its required condition. Derive the three-event chain rule for \\(P(A\\cap B\\cap C)\\). Explain why multiplying \\(P(A)P(B)P(C)\\) is not generally valid.",
+          "a": "For \\(P(B)>0\\), \\(P(A\\mid B)=P(A\\cap B)/P(B)\\). If \\(P(A)>0\\) and \\(P(A\\cap B)>0\\),\n\\[P(A\\cap B\\cap C)=P(A)P(B\\mid A)P(C\\mid A\\cap B).\\]\nSubstitute the defining ratios and cancel. If \\(P(A\\cap B)=0\\), the joint probability is zero and the displayed conditional-on-\\(A\\cap B\\) factor is undefined under the elementary definition. Replacing conditional factors by unconditional ones needs appropriate independence assumptions."
+        }
+      ]
+    },
+    {
+      "id": "M",
+      "title": "Total probability and Bayes' formula",
+      "source": "Ross 3.3; full Chapter 3 coverage requested.",
+      "items": [
+        {
+          "q": "A part comes from machine A with probability \\(1/4\\) and machine B with probability \\(3/4\\). Defect probabilities are \\(1/10\\) for A and \\(1/50\\) for B. Find (a) the probability of a defect and (b) the probability it came from A given a defect.",
+          "a": "Let D mean defective. (a) \\(P(D)=\\frac14\\frac1{10}+\\frac34\\frac1{50}\\), a weighted average over a disjoint, exhaustive source partition. (b) \\(P(A\\mid D)=\\dfrac{(1/4)(1/10)}{(1/4)(1/10)+(3/4)(1/50)}\\). Bayes reverses source-to-result into result-to-source; dividing by \\(P(A)\\) would condition on the wrong event."
+        },
+        {
+          "q": "A fictional electronic screening system flags an item. One item in 20 is faulty. A faulty item is flagged with probability \\(9/10\\); a good item is flagged with probability \\(1/10\\). Find the probability an item is faulty given (a) a flag and (b) no flag.",
+          "a": "Let F be faulty and + be flagged. (a) \\(\\dfrac{(1/20)(9/10)}{(1/20)(9/10)+(19/20)(1/10)}\\). (b) \\(\\dfrac{(1/20)(1/10)}{(1/20)(1/10)+(19/20)(9/10)}\\). Use the likelihood of the observed evidence under each source. A high flag rate for faulty items is not itself the posterior probability of fault."
+        },
+        {
+          "q": "Choose one of three coins uniformly. Their head probabilities are \\(1/2,3/4,1\\). Given the chosen coin, its flips are independent. After observing H,H from that same coin, find (a) the probability it is the double-headed coin and (b) the probability the next flip is H.",
+          "a": "The likelihood weights are \\((1/3)(1/2)^2,(1/3)(3/4)^2,(1/3)\\). (a) \\(\\dfrac{1}{(1/2)^2+(3/4)^2+1}\\). (b) \\(\\dfrac{(1/2)^3+(3/4)^3+1}{(1/2)^2+(3/4)^2+1}\\). Either average the head probabilities using updated coin weights or use \\(P(HHH)/P(HH)\\). The coin is selected once, not again before each toss."
+        },
+        {
+          "q": "Urn A has 3 red and 2 blue balls; urn B has 2 red and 4 blue balls. Transfer one uniformly selected ball from A to B, then select one uniformly from B. Find (a) the probability the final ball is red and (b) the probability the transferred ball was red given a red final ball.",
+          "a": "Condition on the transferred color. After a red transfer, B has 3 red out of 7; after blue, 2 red out of 7. (a) \\((3/5)(3/7)+(2/5)(2/7)\\). (b) \\(\\dfrac{(3/5)(3/7)}{(3/5)(3/7)+(2/5)(2/7)}\\). The denominator after either transfer is 7, not 6."
+        },
+        {
+          "q": "Department A has 10 employees, 8 certified; department B has 30 employees, 12 certified. Compare (a) choosing a department uniformly and then an employee uniformly within it, and (b) choosing an employee uniformly from all 40. For each procedure find the probability of certification and the probability the employee is from A given certification.",
+          "a": "(a) \\(P(C)=\\frac12\\frac8{10}+\\frac12\\frac{12}{30}\\); \\(P(A\\mid C)=\\dfrac{(1/2)(8/10)}{(1/2)(8/10)+(1/2)(12/30)}\\). (b) \\(P(C)=20/40\\) and \\(P(A\\mid C)=8/20\\). In (b), the department priors are \\(10/40,30/40\\); equal department priors would describe a different experiment."
+        }
+      ]
+    },
+    {
+      "id": "N",
+      "title": "Independence, repeated trials, and systems",
+      "source": "Ross 3.4.",
+      "items": [
+        {
+          "q": "A uniformly random card is drawn from a 52-card deck. Are the events A = ace and S = spade independent? Are they mutually exclusive? Separately, can two disjoint events of positive probability be independent? Justify algebraically.",
+          "a": "\\(P(A\\cap S)=1/52=(4/52)(13/52)=P(A)P(S)\\), so they are independent. They are not disjoint because the ace of spades belongs to both. For disjoint positive-probability events, intersection probability is 0 but the product of marginals is positive, so independence is impossible."
+        },
+        {
+          "q": "Two independent fair coins are tossed. Let A = first is H, B = second is H, C = the two results match. Show that A, B, C are pairwise independent but not mutually independent.",
+          "a": "Each marginal is \\(1/2\\). Each pairwise intersection consists only of HH and has probability \\(1/4\\), equal to the product of the corresponding marginals. But \\(P(A\\cap B\\cap C)=1/4\\ne(1/2)^3\\). Mutual independence requires the product identity for every subcollection, including the triple."
+        },
+        {
+          "q": "Three components function independently with probabilities \\(p_1,p_2,p_3\\). Find system reliability when (a) all three must work, (b) at least one must work, and (c) component 1 must work and at least one of components 2 and 3 must work.",
+          "a": "(a) \\(p_1p_2p_3\\). (b) \\(1-(1-p_1)(1-p_2)(1-p_3)\\), by complementing simultaneous failure. (c) \\(p_1[1-(1-p_2)(1-p_3)]\\). Mutual independence justifies the products and the independence of component 1 from events determined by components 2 and 3."
+        },
+        {
+          "q": "Trials are independent, each with success probability \\(p\\), where \\(0<p<1\\). Find probabilities of (a) exactly k successes among n trials, (b) at least one success among n trials, (c) the first success on trial r, and (d) eventual success. Explain each factor.",
+          "a": "(a) \\(\\binom nk p^k(1-p)^{n-k}\\), for \\(0\\le k\\le n\\): choose successful positions, then multiply probabilities for that pattern. (b) \\(1-(1-p)^n\\). (c) \\((1-p)^{r-1}p\\), with no binomial factor because the first-success position is fixed. (d) \\(\\lim_n[1-(1-p)^n]=1\\). Probability 1 does not assert that every infinite sequence contains a success."
+        },
+        {
+          "q": "(a) Team A wins each game independently with probability p. Find the probability A wins a best-of-seven series. (b) Independent rolls of two fair dice continue until their sum is 4 or 7. Find the probability 4 appears first.",
+          "a": "(a) Split by final length: \\(\\sum_{k=4}^7\\binom{k-1}{3}p^4(1-p)^{k-4}\\). Alternatively imagine all seven games: \\(\\sum_{j=4}^7\\binom7j p^j(1-p)^{7-j}\\). (b) Let x be the probability 4 appears first. The first roll gives \\(x=3/36+(27/36)x\\); a 7 contributes zero. Thus \\(x=(3/36)/[(3/36)+(6/36)]\\). Rolls producing neither outcome restart the same situation."
+        }
+      ]
+    },
+    {
+      "id": "O",
+      "title": "Conditional probability as a probability law",
+      "source": "Ross 3.5, including conditional independence and sequential updating.",
+      "items": [
+        {
+          "q": "Fix an event F with \\(P(F)>0\\) and define \\(Q(E)=P(E\\mid F)\\). Prove Q satisfies the three probability axioms.",
+          "a": "Since \\(\\varnothing\\subseteq E\\cap F\\subseteq F\\), \\(0\\le Q(E)\\le1\\). Also \\(Q(S)=P(F)/P(F)=1\\). If the \\(E_i\\) are disjoint, then so are \\(E_i\\cap F\\), and\n\\[Q\\!\\left(\\bigcup_i E_i\\right)=\\frac{P(\\bigcup_i(E_i\\cap F))}{P(F)}=\\sum_i\\frac{P(E_i\\cap F)}{P(F)}=\\sum_i Q(E_i).\\]\nAll divisions are justified by \\(P(F)>0\\)."
+        },
+        {
+          "q": "Given F, suppose \\(P(A\\mid F)=1/2\\), \\(P(B\\mid F)=2/5\\), and \\(P(A\\cap B\\mid F)=1/5\\). Find \\(P(A\\cup B\\mid F)\\) and \\(P(A^c\\mid F)\\). Derive the conditional union identity.",
+          "a": "The answers are \\(1/2+2/5-1/5\\) and \\(1-1/2\\). For the identity, decompose \\((A\\cup B)\\cap F\\), use ordinary inclusion--exclusion for \\(A\\cap F\\) and \\(B\\cap F\\), and divide by \\(P(F)\\). Equivalently apply ordinary identities to the probability law Q in O1. Keep F after the conditioning bar in every term."
+        },
+        {
+          "q": "Let \\(H_1,\\ldots,H_m\\) partition S, with \\(P(F)>0\\) and \\(P(H_i\\cap F)>0\\) for all i. Derive \\(P(E\\mid F)=\\sum_i P(E\\mid H_i\\cap F)P(H_i\\mid F)\\).",
+          "a": "The sets \\(E\\cap H_i\\cap F\\) are disjoint and their union is \\(E\\cap F\\). Divide their probability sum by \\(P(F)\\), then write each term as \\([P(E\\cap H_i\\cap F)/P(H_i\\cap F)] [P(H_i\\cap F)/P(F)]\\). This gives the stated identity. Within the reduced world F, the source weights are \\(P(H_i\\mid F)\\), not generally \\(P(H_i)\\)."
+        },
+        {
+          "q": "A key is in the left pocket with probability \\(2/5\\), right pocket with probability \\(2/5\\), or elsewhere with probability \\(1/5\\). If the key is in the left pocket, a search finds it with probability \\(3/4\\); it never falsely finds a key absent from that pocket. After the left search fails, what is the probability the key is in the right pocket?",
+          "a": "Let U be unsuccessful search. Then \\(P(U)=(2/5)(1/4)+2/5+1/5\\). Because a right-pocket key guarantees failure on the left, \\(P(R\\cap U)=2/5\\). Thus \\(P(R\\mid U)=\\dfrac{2/5}{(2/5)(1/4)+2/5+1/5}\\). A failed search does not prove the key is absent from the left pocket when detection is imperfect."
+        },
+        {
+          "q": "Select one of two coins uniformly, then toss that same coin twice. One coin has head probability \\(1/4\\), the other \\(3/4\\). Given the coin, flips are independent. Are the head events independent (a) conditional on the chosen coin and (b) without that information? Find the probability of H on the second toss given H on the first.",
+          "a": "(a) Yes, as assumed; within either coin type, joint probability equals the product. (b) Each marginal is \\(1/2\\), but \\(P(H_1H_2)=\\frac12(1/4)^2+\\frac12(3/4)^2=5/16\\ne1/4\\). Therefore they are dependent without conditioning. \\(P(H_2\\mid H_1)=(5/16)/(1/2)=5/8\\). Seeing H increases the posterior weight of the coin more likely to produce H."
+        }
+      ]
+    },
+    {
+      "id": "P",
+      "title": "Synthesis and challenge problems",
+      "source": "Ross 2.5 and 3.4--3.5; advanced examples. Attempt after the core groups.",
+      "items": [
+        {
+          "q": "Among all strings with 8 W's and 5 L's, choose one uniformly. A run of W's is a maximal consecutive block of W's. Find the probability of exactly 3 runs of W's.",
+          "a": "All strings number \\(\\binom{13}{8}\\). Split the 8 wins into three positive run sizes in \\(\\binom72\\) ways. A row of five losses has six gaps; choose three distinct gaps for the runs in \\(\\binom63\\) ways. Thus \\(\\binom72\\binom63/\\binom{13}{8}\\). The gap construction keeps different runs separated by at least one loss."
+        },
+        {
+          "q": "N distinct hats are uniformly randomly assigned to N people, one per person. Derive the probability that nobody gets their own hat, and then the probability of exactly k matches, \\(0\\le k\\le N\\). Use inclusion--exclusion rather than assuming matches are independent.",
+          "a": "For a specified set of j people, the probability they all match is \\((N-j)!/N!\\). Inclusion--exclusion gives\n\\[P(\\text{no matches})=\\sum_{j=0}^N(-1)^j\\binom Nj\\frac{(N-j)!}{N!}=\\sum_{j=0}^N\\frac{(-1)^j}{j!}.\\]\nFor exactly k, choose the matched people and derange the remaining \\(N-k\\) hats:\n\\[P(\\text{exactly }k)=\\frac{\\binom Nk(N-k)!}{N!}\\sum_{j=0}^{N-k}\\frac{(-1)^j}{j!}=\\frac1{k!}\\sum_{j=0}^{N-k}\\frac{(-1)^j}{j!}.\\]\nAn empty remaining set has one arrangement, so the formula also covers \\(k=N\\)."
+        },
+        {
+          "q": "Independent coin flips have head probability p, \\(0<p<1\\). Find the probability that HH appears before TT. Set up equations based on the most recent flip rather than listing infinitely many sequences.",
+          "a": "Put \\(q=1-p\\). Let x be the probability from a fresh start, h from a current last flip H, and t from a current last flip T, with neither pattern completed. Then\n\\[x=ph+qt,\\qquad h=p+qt,\\qquad t=ph.\\]\nSubstitution yields \\(h=p/(1-pq)\\), \\(t=p^2/(1-pq)\\), and \\(x=p^2(1+q)/(1-pq)\\). From any nonterminal history a pair of future flips has a fixed positive chance to finish the contest, so endless avoidance has probability zero. For a fair coin the expression is \\(1/2\\), a symmetry check."
+        },
+        {
+          "q": "Six coupons are collected independently, each uniformly one of 4 types. Find the probability all four types occur. Give both an inclusion--exclusion expression and an expression using positive occupancy counts.",
+          "a": "Count labeled six-draw sequences. Inclusion--exclusion gives\n\\[\\frac{4^6-\\binom41 3^6+\\binom42 2^6-\\binom43 1^6}{4^6}.\\]\nAlternatively the numerator is \\(\\sum_{x_1+\\cdots+x_4=6,\\ x_i\\ge1}6!/(x_1!x_2!x_3!x_4!)\\). Occupancy vectors are not equally likely: each must be weighted by its number of sequences. Multichoose alone is not the favorable count."
+        },
+        {
+          "q": "Challenge: There are 10 vertices, with an edge joining every pair. Independently color each edge red or blue with equal probability. For any specified 5 vertices, find the probability all their internal edges have one color. Use the union bound to prove that some coloring has no such monochromatic group of 5 vertices.",
+          "a": "Five vertices have \\(\\binom52=10\\) internal edges. The probability all are red or all blue is \\(2(1/2)^{10}\\), since these two cases are disjoint. The probability some five-vertex group is monochromatic is at most \\(\\binom{10}{5}2(1/2)^{10}<1\\) (equivalently \\(252<512\\)). Thus its complement has positive probability, so at least one coloring has the desired property. Independence of the bad-group events is neither assumed nor needed for the union bound."
+        }
+      ]
+    }
+  ],
+  "recognition": [
+    {
+      "q": "Choose 4 different books from 11 for a trip.",
+      "a": "\\(\\binom{11}{4}\\): unordered selection, no replacement. A permutation would distinguish orders not requested."
+    },
+    {
+      "q": "Place 4 different books from 11 into four numbered display positions.",
+      "a": "\\((11)_4\\): labeled positions and no repeats. Equivalently choose the books and then order them."
+    },
+    {
+      "q": "Make a length-four code from 11 symbols; symbols may repeat.",
+      "a": "\\(11^4\\): four labeled slots with 11 choices each."
+    },
+    {
+      "q": "Choose an unordered box of 4 pastries from 11 unlimited types.",
+      "a": "\\(\\binom{14}{4}\\): multichoose, since repeated types are allowed and only type counts matter."
+    },
+    {
+      "q": "Arrange A,A,A,B,B,C in a row.",
+      "a": "\\(6!/(3!2!)\\): repeated indistinguishable letters. This is arranging a fixed inventory, not choosing an arbitrary multiset."
+    },
+    {
+      "q": "Count positive solutions of \\(x+y+z=11\\).",
+      "a": "\\(\\binom{10}{2}\\): reserve one for each labeled variable, then stars and bars."
+    },
+    {
+      "q": "Choose a committee with at least one of three specified people.",
+      "a": "Total minus committees containing none of the three. A complement avoids overlapping cases such as contains A and contains B."
+    },
+    {
+      "q": "Seat six people around a table; rotations count as the same.",
+      "a": "Circular permutations: \\((6-1)!\\), assuming reflections are different. State the equivalence convention."
+    },
+    {
+      "q": "Find the probability a selected item came from source A, after observing that it failed.",
+      "a": "Bayes: \\(P(A\\mid F)=P(F\\mid A)P(A)/P(F)\\). Compute \\(P(F)\\) by conditioning on all sources."
+    },
+    {
+      "q": "Find the overall probability of failure when different sources have different failure rates.",
+      "a": "Total probability: a weighted sum \\(\\sum_iP(F\\mid S_i)P(S_i)\\) over a disjoint, exhaustive source partition."
+    },
+    {
+      "q": "Find the probability that A occurs, given that B has occurred.",
+      "a": "Conditional probability: \\(P(A\\cap B)/P(B)\\), requiring \\(P(B)>0\\). Count within B when its outcomes are equally likely."
+    },
+    {
+      "q": "Find the probability at least one of several independent components works.",
+      "a": "Complement simultaneous failure: \\(1-\\prod_i(1-p_i)\\). The product is justified by the given independence."
+    },
+    {
+      "q": "Decide whether a proposed list of probabilities on a countable space is valid.",
+      "a": "Check nonnegative weights and that the complete sum is 1; define event probabilities as sums of those weights."
+    },
+    {
+      "q": "Find the probability of the union of an increasing sequence of events.",
+      "a": "Continuity from below: \\(P(\\bigcup_nE_n)=\\lim_nP(E_n)\\). Do not add probabilities of overlapping nested events."
+    },
+    {
+      "q": "Prove an identity involving committee counts on both sides.",
+      "a": "Describe one collection, count it in two ways, and explain the correspondence or disjoint exhaustive cases. A factorial manipulation alone does not give the requested counting proof."
+    },
+    {
+      "q": "Decide whether events are independent from supplied probabilities.",
+      "a": "Compare \\(P(A\\cap B)\\) with \\(P(A)P(B)\\). Being disjoint is a different property."
+    }
+  ],
+  "mixed": [
+    {
+      "q": "A six-character code uses the digits 0 through 9; leading zero is allowed. Count codes in which exactly one digit appears twice and each of the other four digits appears once.",
+      "a": "Choose the repeated digit, four other distinct digits, then arrange the multiset: \\(10\\binom94\\,6!/2!\\). Exactly one pair means the other four digits must be mutually different. \\textbf{Review:} A, D, G."
+    },
+    {
+      "q": "Count integer solutions of \\(x+y+z+w=16\\) with \\(x\\ge2,y\\ge1,z\\ge0,w\\ge1\\), and \\(z\\le5\\).",
+      "a": "Shift the lower bounds, leaving a nonnegative sum of 12, so initially \\(\\binom{15}{3}\\). Exclude \\(z\\ge6\\), which leaves sum 6 after an additional shift: \\(\\binom{15}{3}-\\binom93\\). \\textbf{Review:} E."
+    },
+    {
+      "q": "Suppose \\(P(A)=1/2,P(B)=2/5,P(C)=3/10\\), all three pairwise intersections have probability \\(1/10\\), and \\(P(A\\cap B\\cap C)=1/20\\). Find the probability that exactly two of A, B, C occur, and the probability none occur.",
+      "a": "Exactly two: \\(3(1/10)-3(1/20)\\). None: \\(1-[1/2+2/5+3/10-3(1/10)+1/20]\\). Pairwise intersections include the triple intersection. \\textbf{Review:} H, I."
+    },
+    {
+      "q": "Choose a committee of 6 from 14 people including A and B. The committee must include at least one of A or B. Count the committees, then count results when one committee member is designated chair.",
+      "a": "Committee count \\(\\binom{14}{6}-\\binom{12}{6}\\). Multiply this by 6 to designate a chair. Every permitted committee has six possible chairs; the chair need not be A or B. \\textbf{Review:} C, F."
+    },
+    {
+      "q": "On \\(S=\\{1,2,3,4\\}\\), singleton probabilities are \\(p(k)=ck\\). Find c and the probability of an even outcome. Explain why this defines a probability law.",
+      "a": "\\(c=1/(1+2+3+4)\\). The even-event probability is \\((2+4)/(1+2+3+4)\\). Weights are nonnegative and sum to 1; define event probabilities by summing singleton weights. \\textbf{Review:} J."
+    },
+    {
+      "q": "Nine distinct people sit at a round table. Rotations count as the same and reflections count as different. A and B must not sit next to each other. Count arrangements.",
+      "a": "All circular orders: \\(8!\\). Adjacent: the AB block plus seven others makes eight units, giving \\(2\\cdot7!\\). Answer \\(8!-2\\cdot7!\\). \\textbf{Review:} B."
+    },
+    {
+      "q": "Two independent fair dice are rolled. Given that their sum is even, find the probability at least one die is 6.",
+      "a": "The conditioning set has \\(3\\cdot3+3\\cdot3=18\\) outcomes (both even or both odd). Favorable outcomes are \\((6,2),(6,4),(6,6),(2,6),(4,6)\\). Probability \\(5/18\\). Count \\((6,6)\\) once. \\textbf{Review:} H, L."
+    },
+    {
+      "q": "A uniformly random five-card hand is dealt from a standard deck. Find the probability it contains exactly two pairs and one card of a third rank. Explain every factor.",
+      "a": "\\(\\binom{13}{2}\\binom42^2\\binom{11}{1}4/\\binom{52}{5}\\). Choose two pair ranks without order, two suits for each, the third rank, and its suit. The denominator counts all hands in the same unordered model. \\textbf{Review:} G."
+    },
+    {
+      "q": "Give a combinatorial proof of \\(r\\binom nr=n\\binom{n-1}{r-1}\\) for \\(1\\le r\\le n\\).",
+      "a": "Count size-r committees with a chair. Left: select the committee, then one of its r members as chair. Right: select the chair from n people, then the remaining r-1 members from the other n-1. These describe the same outcomes uniquely. \\textbf{Review:} F."
+    },
+    {
+      "q": "A shipment comes from supplier A with probability \\(2/3\\) and B with probability \\(1/3\\). Their defect rates are \\(1/20\\) and \\(1/5\\). Given that a shipment is defective, find the probability it came from B.",
+      "a": "\\(\\dfrac{(1/3)(1/5)}{(2/3)(1/20)+(1/3)(1/5)}\\). The denominator sums all ways to observe a defect, weighted by supplier probabilities. \\textbf{Review:} M."
+    },
+    {
+      "q": "Find the coefficient of \\(a^2b^3c^2\\) in \\((a+2b-c)^7\\). Explain your expression without calculating factorials.",
+      "a": "\\(\\dfrac{7!}{2!3!2!}2^3(-1)^2\\). Allocate the seven factors to the three chosen terms and multiply their coefficients. The sign is positive because c is selected twice. \\textbf{Review:} D."
+    },
+    {
+      "q": "Events \\(E_1\\subseteq E_2\\subseteq\\cdots\\) satisfy \\(P(E_n)=1-1/(n+2)\\). Find the probability of their union and prove the principle you used by decomposing the events into disjoint pieces.",
+      "a": "The answer is 1. Put \\(D_1=E_1,D_n=E_n\\setminus E_{n-1}\\). The D's are disjoint, each \\(E_n\\) is the union of the first n pieces, and \\(\\bigcup E_n=\\bigcup D_n\\). Countable additivity identifies its probability with the limit of the finite partial sums \\(P(E_n)\\). \\textbf{Review:} K."
+    },
+    {
+      "q": "The sample space \\(\\{1,2,3,4\\}\\) is uniform. Let \\(A=\\{1,2\\}\\), \\(B=\\{1,3\\}\\), and \\(C=\\{1,4\\}\\). Determine whether these events are pairwise independent and whether they are mutually independent.",
+      "a": "All three marginals are \\(1/2\\), and each pairwise intersection is \\(\\{1\\}\\), of probability \\(1/4\\), so they are pairwise independent. The triple also has probability \\(1/4\\), which differs from \\((1/2)^3\\). Hence not mutually independent. \\textbf{Review:} N."
+    },
+    {
+      "q": "For a fixed event F with positive probability, prove \\(P(E^c\\mid F)=1-P(E\\mid F)\\). Clearly identify the disjoint decomposition.",
+      "a": "\\(F=(E\\cap F)\\cup(E^c\\cap F)\\), with disjoint terms. Add their probabilities and divide by \\(P(F)>0\\), obtaining \\(1=P(E\\mid F)+P(E^c\\mid F)\\). \\textbf{Review:} J, O."
+    },
+    {
+      "q": "Flip a fair coin independently until the first H. Describe the finite stopped sample points, give the probability the experiment stops on the fourth flip, and discuss the event of never stopping.",
+      "a": "Finite stopped points are \\(H,TH,TTH,\\ldots\\). Stopping on flip four means TTTH, of probability \\((1/2)^4\\). In the full infinite-flip model, never stopping is the all-tail sequence and has probability \\(\\lim_n(1/2)^n=0\\). In a reduced stopped-sequence model it is omitted. \\textbf{Review:} H, K."
+    },
+    {
+      "q": "A wins each game independently with probability \\(2/3\\). In a best-of-five series, find the probability A wins the series and the probability A wins in exactly four games.",
+      "a": "Series win: \\(\\sum_{k=3}^5\\binom{k-1}{2}(2/3)^3(1/3)^{k-3}\\). Exactly four: \\(\\binom32(2/3)^3(1/3)\\). A's last game is its third win; place the first two wins among the earlier games. \\textbf{Review:} C, N."
+    },
+    {
+      "q": "Uniformly select a string with 7 W's and 4 L's. Find the probability it contains exactly two maximal runs of W's.",
+      "a": "Split wins into two positive parts in \\(\\binom61\\) ways. Select two of the five gaps around the four losses in \\(\\binom52\\) ways. Divide by all \\(\\binom{11}{7}\\) strings: \\(\\binom61\\binom52/\\binom{11}{7}\\). \\textbf{Review:} E, P."
+    },
+    {
+      "q": "A person believes \\(P(A)=1/3,P(B)=1/2,P(A\\cap B)=1/6\\), and \\(P(A\\cup B)=5/6\\). Check consistency and give the union probability required by the first three assignments.",
+      "a": "Inclusion--exclusion requires \\(1/3+1/2-1/6=2/3\\). Therefore 5/6 is inconsistent. Personal beliefs interpreted as probabilities still must satisfy the axioms. \\textbf{Review:} I, K."
+    },
+    {
+      "q": "Choose a fair coin or a double-headed coin, each with probability \\(1/2\\), and toss that same coin twice. After the first toss is H, find the probability the second is H. Explain whether the tosses are independent before the coin type is known.",
+      "a": "\\(P(H_1)=(1/2)(1/2)+(1/2)1=3/4\\). \\(P(H_1H_2)=(1/2)(1/2)^2+(1/2)1=5/8\\). Thus \\(P(H_2\\mid H_1)=(5/8)/(3/4)=5/6\\). This differs from the unconditional \\(P(H_2)=3/4\\), so the tosses are dependent without conditioning on the coin. \\textbf{Review:} M, O."
+    },
+    {
+      "q": "Six distinct letters are uniformly randomly placed into six addressed envelopes, one in each. Find the probability no letter is in its correct envelope, explaining how overlaps between correct-match events are handled.",
+      "a": "A specified set of j correct matches leaves \\((6-j)!\\) permutations. Inclusion--exclusion gives \\(\\dfrac{\\sum_{j=0}^6(-1)^j\\binom6j(6-j)!}{6!}=\\sum_{j=0}^6(-1)^j/j!\\). Intersections of j match events are added or subtracted with alternating signs. The match events are dependent. \\textbf{Review:} I, P."
+    }
+  ],
+  "corrections": [
+    [
+      "Permutation and combination labels",
+      "September 1 notes",
+      "For a basic selection without replacement, permutations distinguish order and combinations do not. The earliest notes reverse these labels. Later notes use the correct definitions."
+    ],
+    [
+      "Three-of-a-kind poker hands",
+      "September 15 homework",
+      "The two single ranks are unordered: use \\(\\binom{12}{2}\\), not \\(12\\cdot11\\). The correct full count is \\(13\\binom43\\binom{12}{2}4^2\\)."
+    ],
+    [
+      "Pairing selected people",
+      "September 3 homework, dance partners",
+      "After choosing k people from each of two groups, there are \\(k!\\) matchings between them. Multiplying by \\((k!)^2\\) unnecessarily orders the resulting unlabeled pairs."
+    ],
+    [
+      "Exactly two events",
+      "September 24 notes",
+      "Exactly two is the union of \\(EFG^c,EGF^c,FGE^c\\), where juxtaposition means intersection. It is at-least-two minus all-three. At-least-one minus at-least-two is exactly one."
+    ],
+    [
+      "Uniform outcomes versus uniform sums",
+      "September 29 notes",
+      "The 36 ordered pairs for independent fair dice are equally likely; the 11 possible sums are not. Sum 11 comes from \\((5,6),(6,5)\\), not \\((6,6)\\)."
+    ],
+    [
+      "Shrinking denominators",
+      "September 29 urn example",
+      "Without replacement, denominators after successive draws are 11, 10, 9. The W,B,B path has probability \\((6/11)(5/10)(4/9)\\). The final denominator is not 10."
+    ],
+    [
+      "Probability weights and events",
+      "September 29 notes",
+      "To build a probability law on a finite or countable space, use nonnegative singleton weights summing to 1 and define event probabilities by sums. Additivity is then obtained from the construction; it is not proved just by inspecting a single outcome. Probability is defined on events in S; outcomes outside S are not automatically extra zero-probability events."
+    ],
+    [
+      "Positive integer solutions",
+      "September 17 notes",
+      "For \\(x_1+\\cdots+x_k=N\\) with every variable positive, reserve one unit per variable and use \\(\\binom{N-1}{k-1}\\) when \\(N\\ge k\\). The variables remain labeled. Exchanging unequal coordinate values generally changes the solution."
+    ],
+    [
+      "Committee identities",
+      "September 3 homework",
+      "The two-officer sum is \\(n2^{n-1}+n(n-1)2^{n-2}=n(n+1)2^{n-2}\\). Also, an identity summed over all committee sizes cannot be checked by equating just its size-three term to the entire right side."
+    ],
+    [
+      "Relative order of three letters",
+      "September 17 homework, A before B before C",
+      "Among arrangements of six distinct letters, the count is \\(6!/3!\\), because all six relative orders of A, B, C occur equally often. A case decomposition must enforce both required comparisons in every case."
+    ],
+    [
+      "Stopped experiments",
+      "September 24 notes",
+      "Finite stopped sequences omit infinite nontermination. In a full independent fair-die model, never rolling 6 is a legitimate event with probability zero. State the chosen sample-space convention; do not confuse probability zero with logical impossibility."
+    ],
+    [
+      "Poker straight convention",
+      "September 15 notes and homework",
+      "The homework records nine straight rank patterns and explicitly excludes ace-low A,2,3,4,5. G4--G5 state that convention in their questions. The usual ace-low-inclusive convention gives ten patterns. This is a convention to state explicitly, not a mathematical error to silently copy or replace."
+    ]
+  ]
+}

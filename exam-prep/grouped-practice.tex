@@ -1,0 +1,454 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.78in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,longtable,array,enumitem,xcolor,fancyhdr,hyperref,needspace,textcomp}
+\definecolor{ink}{HTML}{18364D}
+\definecolor{accent}{HTML}{146C78}
+\definecolor{muted}{HTML}{53616C}
+\hypersetup{colorlinks=true,linkcolor=accent,urlcolor=accent}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small MTH 241\quad Probability exam preparation}\fancyhead[R]{\small Ross, 10th edition}\fancyfoot[C]{\small\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlist{itemsep=3pt,topsep=4pt,leftmargin=*}
+\setlength{\emergencystretch}{3em}
+\newcommand{\qid}[1]{\par\needspace{5\baselineskip}\noindent{\color{accent}\bfseries #1}\quad}
+\newcommand{\source}[1]{{\small\color{muted}#1}\par}
+\newcommand{\studytitle}[2]{\thispagestyle{empty}{\color{accent}\large MTH 241 / EXAM PREPARATION}\par\vspace{0.4in}{\color{ink}\Huge\bfseries #1\par}\vspace{0.15in}{\large #2\par}\vspace{0.25in}}
+\begin{document}
+\studytitle{Grouped practice workbook}{Chapters 1, 2, and 3 / Sheldon Ross, 10th edition}
+\textbf{Purpose.} Learn to recognize the structure of a problem, choose a method, and explain the setup. There are 80 numbered grouped problems (many with subparts), plus 16 method-recognition drills. All questions are newly written or adapted in context/values from the topic patterns in your materials, not an official practice exam.
+
+\textbf{Your exam conditions.} No calculator and no formula sheet. Leave answers as exact expressions such as \(\binom nm\), factorial ratios, products, sums, and fractions. A correct expression must still be supported by an explanation of what it counts. The study guide below is for preparation: cover it when testing yourself.
+
+\textbf{Scope.} Chapters 1 and 2 in full, plus all of Chapter 3 at your request. Your stated exam scope is the beginning of Chapter 3, with the exact cutoff unknown. The extra Chapter 3 material is deliberate preparation, not a claim that every later topic will appear. The September 29 notes announce October 15, 2026; the actual exam format is unknown.
+
+\textbf{Solution style.} Your notes emphasize decomposing a task, checking order and repetition, and explaining disjoint cases. The worked key follows those conventions and your stated preference for symbolic answers. Homework authorship is mixed, so no unverified homework calculation is treated as an instructor rule.
+
+\textbf{Three companion documents.}
+\begin{itemize}
+\item This workbook: guide, grouped practice, recognition drills, and a flexible study sequence.
+\item Mixed mock exam: 20 questions with no method labels or supplied formulas.
+\item Worked answer key: answers to every numbered question and drill, plus corrections to the source notes.
+\end{itemize}
+Use separate paper for long solutions. Mark each attempt \emph{recognized unaided}, \emph{recognized after a hint}, or \emph{wrong method}. Retry missed questions without looking at the answer.
+\vfill\source{Prepared September 29, 2026. Primary class materials: notes dated September 1--29 and homework dated September 3--24. Textbook coverage uses section numbers because PDF page labels and class page references differ.}
+\clearpage
+\section*{How to decide what to use}
+\textbf{Begin with one sentence: what is one outcome?} A committee, an ordered list, a flavor-count vector, a card hand, a stopped sequence, and a sequence of dice pairs are different objects. The sample space determines what counts as the same result.
+
+\textbf{For a counting task, ask:}
+\begin{enumerate}
+\item Are there labeled positions or roles? Would swapping two selected objects change the result?
+\item Can the same object or category be selected again? Distinguish repeated types from repeated physical objects.
+\item Are the objects distinct? Are boxes, groups, or positions labeled?
+\item Are there restrictions requiring blocks, gaps, lower-bound shifts, symmetry, a complement, or cases?
+\end{enumerate}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{1.55in}p{1.25in}p{2.8in}}
+\toprule
+Structure & Basic expression & Why it fits\\\midrule
+Order matters; repeats allowed & \(n^r\) & r slots, n choices for each slot.\\
+Order matters; no repeats & \((n)_r=\frac{n!}{(n-r)!}\) & Choices shrink as objects are used.\\
+Order irrelevant; no repeats & \(\binom nr\) & All r! orders describe the same subset.\\
+Order irrelevant; repeated types allowed & \(\binom{n+r-1}{r}\) & Count r identical selections in n labeled categories, with unlimited supply.\\\bottomrule
+\end{tabular}
+\end{center}
+This table handles basic models, not every restriction. For example, an increasing sequence has a unique order once its members are chosen. In stars and bars, the categories remain labeled: exchanging the x and y counts generally changes the solution.
+
+\textbf{Add, multiply, or divide?} Multiply successive choices when each count is valid given the previous choices. Add disjoint, exhaustive cases. Subtract a complement when the forbidden case is simpler. Divide only after identifying a constant number of descriptions for every final object. For counting tasks, independence is not required by the multiplication principle.
+
+\textbf{For a probability task, ask:}
+\begin{itemize}
+\item Are elementary outcomes equally likely? If so, count favorable and total outcomes using the same convention.
+\item Is information already given? Condition on it: that event becomes the reduced sample space.
+\item Are there several possible sources? Average over a partition using total probability.
+\item Are you asked which source produced an observed result? Use Bayes' formula.
+\item Is independence given or proved? Only then replace conditional probabilities by unconditional factors.
+\end{itemize}
+\clearpage
+\section*{Writing a solution your reasoning can support}
+\textbf{Counting template.} State the object being counted. For each stage, identify whether order matters and whether repetition is allowed. Explain each factor or case. Finish with the exact expression and state why every valid outcome is counted once.
+
+\textbf{Probability template.} Define the sample space and event. Explain why the elementary outcomes are equally likely, or specify their weights. Form a consistent ratio, conditional expression, or sum over disjoint events. Check that the result is a probability.
+
+\textbf{Proof template.} For counting identities, describe the same collection on both sides. For probability identities, write a set decomposition, show its pieces are disjoint, then name the axiom or earlier result that allows the probability step.
+
+\textbf{Example of a sufficient symbolic answer.} Choosing 2 black and 1 white ball uniformly without replacement from 5 black and 6 white distinct balls:
+\[P(E)=\frac{\binom52\binom61}{\binom{11}{3}}.\]
+The numerator chooses the two black balls and the one white ball; the denominator chooses any three distinct balls. Every three-ball subset is equally likely. No numerical evaluation is needed.
+
+\textbf{Avoid keyword-only decisions.} The word \emph{choose} can describe selecting officeholders for distinct roles. \emph{And} does not by itself justify multiplying unconditional probabilities. \emph{At least} often suggests a complement, but the events and restrictions still need to be identified.
+
+\subsection*{Coverage map}
+\begin{tabular}{p{2.8in}p{2.8in}}
+\toprule
+Ross sections & Workbook groups\\\midrule
+1.1--1.3: counting and permutations & A, B, D\\
+1.4: combinations and binomial theorem & C, D, F, G\\
+1.5: multinomial coefficients & D, F\\
+1.6: integer solutions & E, P\\
+2.1--2.2: sample spaces and events & H\\
+2.3--2.4: axioms and propositions & I, J\\
+2.5: equally likely outcomes & G, I, J, P\\
+2.6--2.7: limits and belief & K\\
+3.1--3.2: conditional probability & L\\
+3.3: total probability and Bayes & M\\
+3.4: independence & N, P\\
+3.5: conditional probability laws & O, P\\\bottomrule
+\end{tabular}
+
+\textbf{Priority.} A--O cover the core section concepts. P contains demanding synthesis and selected advanced example patterns. J is the dedicated September 29 group. No finite packet can exhaust every possible wording; this one covers the section concepts and major structures represented in the class materials and textbook.
+
+\clearpage
+\section*{A. Basic counting and permutations}
+\source{Ross 1.2--1.3; September 3 notes and homework.}
+\qid{A1} A code has three letters followed by four digits. There are 26 letters and 10 digits; a zero is allowed in any digit position. Count the codes (a) with repetition allowed and (b) with no repeated letter and no repeated digit.
+\par\vspace{0.40in}
+
+\qid{A2} Using digits 0 through 9, count (a) length-five digit strings with no repeated digit, (b) five-digit integers with no repeated digit, and (c) five-digit integers in which adjacent digits differ but nonadjacent repeats are allowed.
+\par\vspace{0.40in}
+
+\qid{A3} A club has 12 members. Count assignments of president, secretary, and treasurer (a) to three different people and (b) when one person may hold multiple offices.
+\par\vspace{0.40in}
+
+\qid{A4} A visitor chooses either a bus package (one of 4 buses and one of 3 tours) or a train package (one of 2 trains and one of 5 tours). The package types are distinct. How many packages are possible?
+\par\vspace{0.40in}
+
+\qid{A5} Three distinct prizes are awarded among 9 students. Count awards when (a) everyone receives at most one prize, (b) a student may receive any number, and (c) exactly two different students receive prizes.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{B. Restricted and circular arrangements}
+\source{Ross 1.3; September 17 notes and homework.}
+\qid{B1} Seven distinct people, including A and B, sit in a row. Count arrangements when (a) A and B are adjacent, (b) A and B are not adjacent, and (c) A is somewhere before B.
+\par\vspace{0.40in}
+
+\qid{B2} Four distinct women and four distinct men sit in a row. Count arrangements when (a) the groups alternate, (b) all women are together, and (c) both all women and all men are together.
+\par\vspace{0.40in}
+
+\qid{B3} Five distinct adults and three distinct children sit in a row. No two children may be adjacent. Count the arrangements.
+\par\vspace{0.40in}
+
+\qid{B4} Eight distinct people sit around a round table. Rotations count as the same and reflections count as different. Count arrangements (a) without restrictions and (b) when A and B are adjacent.
+\par\vspace{0.40in}
+
+\qid{B5} Arrange A, B, C, D, E, F, G in a row. Count arrangements with (a) A before B before C, (b) A before B and C before D, and (c) A, B, C consecutive in that exact order.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{C. Combinations and restricted selections}
+\source{Ross 1.4; September 10 notes and September 10/17 homework.}
+\qid{C1} Choose a committee of 5 from 12 people including A and B. Count committees when (a) A must serve, (b) A and B cannot both serve, and (c) A and B either both serve or neither serves.
+\par\vspace{0.40in}
+
+\qid{C2} A committee contains 3 women from 8 and 2 men from 6. Count committees (a) without restrictions and (b) when one specified woman and one specified man refuse to serve together.
+\par\vspace{0.40in}
+
+\qid{C3} From 9 married couples, choose 5 people without selecting both members of any couple. (a) Count all such groups. (b) Count those containing exactly 2 women and 3 men, assuming each couple has one woman and one man.
+\par\vspace{0.40in}
+
+\qid{C4} Count subsets of size 4 of \(\{1,\ldots,20\}\) containing at least one of \(1,2,3,4,5\). Then count strictly increasing sequences \(a_1<a_2<a_3<a_4<a_5\) drawn from \(\{1,\ldots,20\}\).
+\par\vspace{0.40in}
+
+\qid{C5} A team wins a best-of-seven series by winning its fourth game; the series stops then. Count the possible win/loss sequences in which team A wins the series.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{D. Repeated objects, multinomial coefficients, and pairing}
+\source{Ross 1.3--1.5; early homework and lattice-path practice.}
+\qid{D1} How many distinct letter arrangements are possible for (a) BANANA and (b) MISSISSIPPI? Explain each divisor.
+\par\vspace{0.40in}
+
+\qid{D2} Divide 12 distinct students into (a) labeled groups Red, Blue, Green of sizes 5, 4, 3; (b) three labeled groups of size 4; and (c) three unlabeled groups of size 4.
+\par\vspace{0.40in}
+
+\qid{D3} A lattice path from \((0,0)\) to \((6,4)\) uses only right and up unit steps. Count paths (a) in total, (b) through \((2,1)\), and (c) avoiding \((2,1)\).
+\par\vspace{0.40in}
+
+\qid{D4} Find the coefficient of (a) \(x^3y^5\) in \((x+y)^8\), and (b) \(x^2y^3z^4\) in \((2x-y+3z)^9\). Explain the sign in (b).
+\par\vspace{0.40in}
+
+\qid{D5} Select 4 women from 7 and 4 men from 9, then pair them into four woman--man pairs. The pairs have no labels. Count the results. Separately, count ways to split 8 distinct people into four unlabeled pairs with no gender restriction.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{E. Multichoose and integer solutions}
+\source{Ross 1.6; September 15 and 17 notes.}
+\qid{E1} A bakery has unlimited supplies of 6 donut flavors. Count unordered boxes of 10 donuts (a) without restrictions and (b) containing at least one of each flavor.
+\par\vspace{0.40in}
+
+\qid{E2} Count integer solutions of \(x_1+x_2+x_3+x_4=18\) for (a) all \(x_i\ge0\), (b) all \(x_i\ge1\), and (c) \(x_1\ge3,x_2\ge2,x_3\ge0,x_4\ge1\).
+\par\vspace{0.40in}
+
+\qid{E3} Count nonnegative integer solutions of \(x+y+z=12\) with (a) \(x\le4\) and (b) both \(x\le4\) and \(y\le3\).
+\par\vspace{0.40in}
+
+\qid{E4} Count nonnegative integer triples satisfying \(x+y+z\le12\). Explain how to change the inequality into an equation.
+\par\vspace{0.40in}
+
+\qid{E5} Put 9 identical tokens into 4 labeled boxes, using exactly 3 nonempty boxes. Then solve the same problem when the 9 tokens are distinct.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{F. Combinatorial proofs}
+\source{Ross 1.4--1.5; September 10 notes and theory homework.}
+\qid{F1} Give counting proofs of (a) \(\binom nr=\binom n{n-r}\), and (b) \(\binom nr=\binom{n-1}{r}+\binom{n-1}{r-1}\) for \(1\le r\le n-1\). Do not expand factorials.
+\par\vspace{0.40in}
+
+\qid{F2} Prove \(\binom{m+n}{r}=\sum_{k=0}^r\binom mk\binom n{r-k}\) by counting one collection in two ways. Take impossible binomial choices to be zero.
+\par\vspace{0.40in}
+
+\qid{F3} For \(n\ge1\), prove \(\sum_{k=1}^n k\binom nk=n2^{n-1}\) by choosing a committee and its chairperson.
+\par\vspace{0.40in}
+
+\qid{F4} For \(n\ge2\), prove \(\sum_{k=1}^n k^2\binom nk=n2^{n-1}+n(n-1)2^{n-2}\). Interpret the two terms on the right.
+\par\vspace{0.40in}
+
+\qid{F5} For integers \(r\ge1,n\ge0\), prove \(\sum_{x_1+\cdots+x_r=n,\ x_i\ge0}\frac{n!}{x_1!\cdots x_r!}=r^n\) by counting words.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{G. Poker hands: ranks, suits, and overcounting}
+\source{Ross 1.4 and 2.5; September 15 notes and poker homework.}
+\qid{G1} Use a standard 52-card deck with 13 ranks and 4 suits. A hand is an unordered selection of 5 distinct cards. Count (a) all hands and (b) hands with exactly one pair. In (b), the other three ranks must all differ from each other and from the pair.
+\par\vspace{0.40in}
+
+\qid{G2} Under G1's deck convention, count hands with (a) exactly two pairs and (b) exactly three of a kind (excluding full houses).
+\par\vspace{0.40in}
+
+\qid{G3} Under G1's deck convention, count (a) full houses (three cards of one rank and two of another) and (b) four-of-a-kind hands.
+\par\vspace{0.40in}
+
+\qid{G4} For G4--G5, use the convention recorded in your poker homework: ace is high only; A,2,3,4,5 is not a straight. Thus there are 9 straight rank patterns. Count (a) straights that are not flushes and (b) flushes that are not straights.
+\par\vspace{0.40in}
+
+\qid{G5} Using G4's ace-high-only convention, count (a) high-card hands (five different ranks, neither straight nor flush), (b) straight flushes including royal flushes, and (c) royal flushes. State how many straight flushes remain if royal flushes are excluded. Give the probability of each category under uniform dealing.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{H. Sample spaces and event language}
+\source{Ross 2.2; September 24 notes.}
+\qid{H1} A bag contains three distinct balls R, G, B. Two balls are drawn in order. List sample spaces (a) with replacement and (b) without replacement. In each space, list the event that at least one ball is R.
+\par\vspace{0.40in}
+
+\qid{H2} Two independent fair dice are rolled. Describe a sample space whose outcomes are equally likely and write the event that the sum is 5. Why is a uniform model on \(\{2,3,\ldots,12\}\) incorrect?
+\par\vspace{0.40in}
+
+\qid{H3} A fair die is rolled independently until the first 6. Describe the finite stopped sequences and the event \(E_n\) that the first 6 occurs on roll \(n\). Find \(|E_n|\) and \(P(E_n)\). Explain what the union of all \(E_n\) represents, including the possibility of never rolling a 6.
+\par\vspace{0.40in}
+
+\qid{H4} For events E, F, G, express (a) only E, (b) at least two, (c) exactly two, (d) at most one, and (e) at most two using unions, intersections, and complements.
+\par\vspace{0.40in}
+
+\qid{H5} Show that \((E\cup F)^c=E^c\cap F^c\) by describing membership. Also express the event that exactly one of E and F occurs, and explain why its two parts are disjoint.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{I. Probability by counting, complements, and inclusion--exclusion}
+\source{Ross 2.4--2.5; September 24 homework.}
+\qid{I1} A jar has 7 white and 5 black distinct balls. A uniformly random set of 4 is drawn without replacement. Find the probability of (a) exactly 2 black balls, (b) at least 1 black ball, and (c) all balls having the same color.
+\par\vspace{0.40in}
+
+\qid{I2} Suppose \(P(A)=2/5\), \(P(B)=1/2\), and \(P(A\cap B)=1/5\). Find the probabilities of (a) at least one, (b) neither, (c) A but not B, and (d) exactly one.
+\par\vspace{0.40in}
+
+\qid{I3} In a group of 100 students, 45 take A, 40 take B, 30 take C, 18 take A and B, 12 take A and C, 10 take B and C, and 5 take all three. Pairwise counts include the triple intersection. Find (a) at least one, (b) exactly one, (c) exactly two, and (d) none.
+\par\vspace{0.40in}
+
+\qid{I4} A group of \(n\) people has independent birthdays uniformly distributed over 365 days; ignore leap years and take \(2\le n\le365\). Find the probability that at least two share a birthday.
+\par\vspace{0.40in}
+
+\qid{I5} An urn has 4 red, 5 blue, and 6 green distinct balls. A uniformly random subset of 5 is chosen. Find the probability that every color appears.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{J. September 29 focus: axioms and equally likely outcomes}
+\source{Ross 2.3--2.5; September 29 notes. Symbolic answers follow your stated exam preference.}
+\qid{J1} For singleton outcomes define \(p(s)=1/s\). Test whether this determines a probability law on (a) \(S=\{2,3,4\}\), (b) \(S=\{2,3,6\}\). In each valid case define probabilities of general events. Also normalize \(p(s)=c/s\) on \(\{2,3,4\}\).
+\par\vspace{0.40in}
+
+\qid{J2} On \(S=\{1,2,\ldots\}\), assign \(p(n)=c/3^n\). Find c so this is a probability law, then find \(P(\{2,4,6,\ldots\})\). Explain why checking finitely many weights does not establish normalization.
+\par\vspace{0.40in}
+
+\qid{J3} Starting from the probability axioms, prove (a) \(P(\varnothing)=0\) and (b) \(P(E^c)=1-P(E)\). Identify the disjoint sets at each step.
+\par\vspace{0.40in}
+
+\qid{J4} Prove \(P(E)=P(E\cap F)+P(E\cap F^c)\). Use disjoint decompositions to prove (a) \(E\subseteq F\Rightarrow P(E)\le P(F)\), and (b) \(P(E\cup F)\le P(E)+P(F)\).
+\par\vspace{0.40in}
+
+\qid{J5} (a) Two independent fair dice are rolled. Find the probability their sum is prime, justifying the denominator. (b) A uniformly random set of 3 balls is drawn from 6 white and 5 black distinct balls. Find the probability of exactly 2 black and 1 white. Explain the numerator and denominator.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{K. Probability limits and probability as belief}
+\source{Ross 2.6--2.7; textbook coverage beyond the current notes.}
+\qid{K1} On the positive integers let \(P(\{k\})=2^{-k}\). Define \(A_n=\{1,\ldots,n\}\). Identify whether the events increase or decrease; find \(P(A_n)\), their limiting event, and its probability.
+\par\vspace{0.40in}
+
+\qid{K2} Let \(B_1\supseteq B_2\supseteq\cdots\) with \(P(B_n)=1/(n+1)\). Find \(P(\bigcap_n B_n)\). Must \(\bigcap_n B_n\) be empty? Explain.
+\par\vspace{0.40in}
+
+\qid{K3} Prove continuity from below: if \(A_n\uparrow A\), then \(P(A_n)\to P(A)\). Then explain how the decreasing-event version follows.
+\par\vspace{0.40in}
+
+\qid{K4} Someone assigns personal probabilities \(P(A)=2/5\), \(P(B)=1/2\), \(P(A\cap B)=1/10\), and \(P(A\cup B)=9/10\). Are these coherent? What union probability is required if the first three assignments stay fixed? Why must subjective probabilities satisfy the same axioms?
+\par\vspace{0.40in}
+
+\qid{K5} Suppose \(F_1,F_2,\ldots\) is a countable list of events and each has probability 0. Prove that the probability that any \(F_i\) occurs is 0. Explain why the same conclusion cannot be asserted for an arbitrary uncountable family.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{L. Conditional probability and multiplication rules}
+\source{Ross 3.1--3.2; included under the request to cover all Chapter 3.}
+\qid{L1} Two independent fair dice are rolled. Find the probability the sum is 8 given (a) the first die is 3 and (b) at least one die is 3. Define the conditioning event in each case.
+\par\vspace{0.40in}
+
+\qid{L2} Three independent fair coins are flipped. Find the probability of exactly two heads given (a) at least one head and (b) that the first flip is a head.
+\par\vspace{0.40in}
+
+\qid{L3} An urn has 5 red and 4 blue balls. Three balls are drawn uniformly, one at a time without replacement. Find (a) P(R,B,R) in that order and (b) the probability of exactly two red balls, without a specified order. Give two equivalent expressions for (b).
+\par\vspace{0.40in}
+
+\qid{L4} An urn has 4 red and 3 blue balls. Each red ball has weight 2 and each blue ball has weight 1. On each draw, a particular remaining ball is chosen with probability proportional to its weight. Two balls are drawn without replacement. Find the probability both are red.
+\par\vspace{0.40in}
+
+\qid{L5} State the definition of \(P(A\mid B)\), including its required condition. Derive the three-event chain rule for \(P(A\cap B\cap C)\). Explain why multiplying \(P(A)P(B)P(C)\) is not generally valid.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{M. Total probability and Bayes' formula}
+\source{Ross 3.3; full Chapter 3 coverage requested.}
+\qid{M1} A part comes from machine A with probability \(1/4\) and machine B with probability \(3/4\). Defect probabilities are \(1/10\) for A and \(1/50\) for B. Find (a) the probability of a defect and (b) the probability it came from A given a defect.
+\par\vspace{0.40in}
+
+\qid{M2} A fictional electronic screening system flags an item. One item in 20 is faulty. A faulty item is flagged with probability \(9/10\); a good item is flagged with probability \(1/10\). Find the probability an item is faulty given (a) a flag and (b) no flag.
+\par\vspace{0.40in}
+
+\qid{M3} Choose one of three coins uniformly. Their head probabilities are \(1/2,3/4,1\). Given the chosen coin, its flips are independent. After observing H,H from that same coin, find (a) the probability it is the double-headed coin and (b) the probability the next flip is H.
+\par\vspace{0.40in}
+
+\qid{M4} Urn A has 3 red and 2 blue balls; urn B has 2 red and 4 blue balls. Transfer one uniformly selected ball from A to B, then select one uniformly from B. Find (a) the probability the final ball is red and (b) the probability the transferred ball was red given a red final ball.
+\par\vspace{0.40in}
+
+\qid{M5} Department A has 10 employees, 8 certified; department B has 30 employees, 12 certified. Compare (a) choosing a department uniformly and then an employee uniformly within it, and (b) choosing an employee uniformly from all 40. For each procedure find the probability of certification and the probability the employee is from A given certification.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{N. Independence, repeated trials, and systems}
+\source{Ross 3.4.}
+\qid{N1} A uniformly random card is drawn from a 52-card deck. Are the events A = ace and S = spade independent? Are they mutually exclusive? Separately, can two disjoint events of positive probability be independent? Justify algebraically.
+\par\vspace{0.40in}
+
+\qid{N2} Two independent fair coins are tossed. Let A = first is H, B = second is H, C = the two results match. Show that A, B, C are pairwise independent but not mutually independent.
+\par\vspace{0.40in}
+
+\qid{N3} Three components function independently with probabilities \(p_1,p_2,p_3\). Find system reliability when (a) all three must work, (b) at least one must work, and (c) component 1 must work and at least one of components 2 and 3 must work.
+\par\vspace{0.40in}
+
+\qid{N4} Trials are independent, each with success probability \(p\), where \(0<p<1\). Find probabilities of (a) exactly k successes among n trials, (b) at least one success among n trials, (c) the first success on trial r, and (d) eventual success. Explain each factor.
+\par\vspace{0.40in}
+
+\qid{N5} (a) Team A wins each game independently with probability p. Find the probability A wins a best-of-seven series. (b) Independent rolls of two fair dice continue until their sum is 4 or 7. Find the probability 4 appears first.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{O. Conditional probability as a probability law}
+\source{Ross 3.5, including conditional independence and sequential updating.}
+\qid{O1} Fix an event F with \(P(F)>0\) and define \(Q(E)=P(E\mid F)\). Prove Q satisfies the three probability axioms.
+\par\vspace{0.40in}
+
+\qid{O2} Given F, suppose \(P(A\mid F)=1/2\), \(P(B\mid F)=2/5\), and \(P(A\cap B\mid F)=1/5\). Find \(P(A\cup B\mid F)\) and \(P(A^c\mid F)\). Derive the conditional union identity.
+\par\vspace{0.40in}
+
+\qid{O3} Let \(H_1,\ldots,H_m\) partition S, with \(P(F)>0\) and \(P(H_i\cap F)>0\) for all i. Derive \(P(E\mid F)=\sum_i P(E\mid H_i\cap F)P(H_i\mid F)\).
+\par\vspace{0.40in}
+
+\qid{O4} A key is in the left pocket with probability \(2/5\), right pocket with probability \(2/5\), or elsewhere with probability \(1/5\). If the key is in the left pocket, a search finds it with probability \(3/4\); it never falsely finds a key absent from that pocket. After the left search fails, what is the probability the key is in the right pocket?
+\par\vspace{0.40in}
+
+\qid{O5} Select one of two coins uniformly, then toss that same coin twice. One coin has head probability \(1/4\), the other \(3/4\). Given the coin, flips are independent. Are the head events independent (a) conditional on the chosen coin and (b) without that information? Find the probability of H on the second toss given H on the first.
+\par\vspace{0.40in}
+
+
+\clearpage
+\section*{P. Synthesis and challenge problems}
+\source{Ross 2.5 and 3.4--3.5; advanced examples. Attempt after the core groups.}
+\qid{P1} Among all strings with 8 W's and 5 L's, choose one uniformly. A run of W's is a maximal consecutive block of W's. Find the probability of exactly 3 runs of W's.
+\par\vspace{0.40in}
+
+\qid{P2} N distinct hats are uniformly randomly assigned to N people, one per person. Derive the probability that nobody gets their own hat, and then the probability of exactly k matches, \(0\le k\le N\). Use inclusion--exclusion rather than assuming matches are independent.
+\par\vspace{0.40in}
+
+\qid{P3} Independent coin flips have head probability p, \(0<p<1\). Find the probability that HH appears before TT. Set up equations based on the most recent flip rather than listing infinitely many sequences.
+\par\vspace{0.40in}
+
+\qid{P4} Six coupons are collected independently, each uniformly one of 4 types. Find the probability all four types occur. Give both an inclusion--exclusion expression and an expression using positive occupancy counts.
+\par\vspace{0.40in}
+
+\qid{P5} Challenge: There are 10 vertices, with an edge joining every pair. Independently color each edge red or blue with equal probability. For any specified 5 vertices, find the probability all their internal edges have one color. Use the union bound to prove that some coloring has no such monochromatic group of 5 vertices.
+\par\vspace{0.40in}
+\clearpage\section*{Method-recognition drills}
+Cover the guide. For each prompt, name the method, describe one outcome, and give the setup or first equation. Do not evaluate. Give a reason that a plausible competing method would be wrong. Answers appear only in the separate key.
+\qid{R1} Choose 4 different books from 11 for a trip.\par\vspace{0.19in}
+\qid{R2} Place 4 different books from 11 into four numbered display positions.\par\vspace{0.19in}
+\qid{R3} Make a length-four code from 11 symbols; symbols may repeat.\par\vspace{0.19in}
+\qid{R4} Choose an unordered box of 4 pastries from 11 unlimited types.\par\vspace{0.19in}
+\qid{R5} Arrange A,A,A,B,B,C in a row.\par\vspace{0.19in}
+\qid{R6} Count positive solutions of \(x+y+z=11\).\par\vspace{0.19in}
+\qid{R7} Choose a committee with at least one of three specified people.\par\vspace{0.19in}
+\qid{R8} Seat six people around a table; rotations count as the same.\par\vspace{0.19in}
+\qid{R9} Find the probability a selected item came from source A, after observing that it failed.\par\vspace{0.19in}
+\qid{R10} Find the overall probability of failure when different sources have different failure rates.\par\vspace{0.19in}
+\qid{R11} Find the probability that A occurs, given that B has occurred.\par\vspace{0.19in}
+\qid{R12} Find the probability at least one of several independent components works.\par\vspace{0.19in}
+\qid{R13} Decide whether a proposed list of probabilities on a countable space is valid.\par\vspace{0.19in}
+\qid{R14} Find the probability of the union of an increasing sequence of events.\par\vspace{0.19in}
+\qid{R15} Prove an identity involving committee counts on both sides.\par\vspace{0.19in}
+\qid{R16} Decide whether events are independent from supplied probabilities.\par\vspace{0.19in}\clearpage\section*{A flexible two-week sequence}
+This is a sequence of study sessions, not a claim about how much free time you have. Split a session if needed. In each session, first try problems unaided, then read only the solutions you need, and finally redo a missed problem on a blank page.
+\begin{longtable}{p{0.6in}p{5.7in}}
+\toprule Session & Focus\\\midrule
+1 & Try R1--R16 without the guide. Record which structures you cannot yet distinguish.\\
+2 & A and B: positions, restrictions, blocks, gaps, and circular arrangements.\\
+3 & C and D: subsets, repeated objects, multinomial choices, and pairing.\\
+4 & E: lower bounds, upper bounds, slack variables, and identical versus distinct objects.\\
+5 & F: write counting proofs in complete sentences.\\
+6 & G: separate ranks from suits and explain every factor.\\
+7 & H and I: sample spaces, event language, complements, and overlap.\\
+8 & J: reproduce today's axioms and proofs; work the dice and urn questions.\\
+9 & K and L: probability limits and changing the sample space after information.\\
+10 & M: total probability versus Bayes; write the source partition first.\\
+11 & N and O: independence, conditional independence, and conditional laws.\\
+12 & P: attempt synthesis after repairing weak core topics.\\
+13 & Mixed mock questions 1--10, closed book; score and diagnose afterward.\\
+14 & Mixed mock questions 11--20, closed book; redo errors and repeat R1--R16.\\\bottomrule
+\end{longtable}
+If you start on September 30, these 14 sessions end October 13. Use October 14 for light recall and correcting recurring mistakes before the October 15 exam listed in your notes. Adjust if the exam date changes.
+
+\textbf{Recall practice without a supplied formula sheet.} From memory, write the four basic counting models, inclusion--exclusion, the probability axioms, conditional probability, the chain rule, total probability, Bayes, and the independence criterion. Then explain one example for each. Rebuild a forgotten formula from the underlying counting or event argument.
+
+\subsection*{Error log}
+\begin{tabular}{p{0.65in}p{1.25in}p{2.65in}p{1.3in}}
+\toprule ID & Error type & What feature changes the method? & Retry date\\\midrule
+\rule{0pt}{0.4in} & & &\\
+\rule{0pt}{0.4in} & & &\\
+\rule{0pt}{0.4in} & & &\\
+\rule{0pt}{0.4in} & & &\\\bottomrule
+\end{tabular}
+Use error types: model, order/repetition, overcounting, event translation, conditioning, independence, or proof explanation.
+
+\end{document}
